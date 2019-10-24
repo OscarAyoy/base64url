@@ -45,6 +45,10 @@ func openInputFile(fileName string) (*os.File, error) {
 		return os.Stdin, nil
 	}
 
+	if !fileExists(fileName) {
+		return nil, fmt.Errorf("openInputFile: error opening %v: file does not exist", fileName)
+	}
+
 	return os.Open(fileName)
 }
 
@@ -53,7 +57,20 @@ func openOutputFile(fileName string) (*os.File, error) {
 		return os.Stdout, nil
 	}
 
+	if fileExists(fileName) {
+		return nil, fmt.Errorf("openOutputFile: error opening %v: file already exists", fileName)
+	}
+
 	return os.Create(fileName)
+}
+
+func fileExists(fileName string) bool {
+	_, err := os.Stat(fileName)
+	if os.IsNotExist(err) {
+		return false
+	}
+
+	return true
 }
 
 func readInputFile(file *os.File) ([]byte, error) {
