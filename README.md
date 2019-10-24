@@ -1,6 +1,12 @@
 # base64url
 Command-line base64url encoder / decoder
 
+# Installation
+
+```bash
+$ go get -u github.com/oscarayoy/base64url/cmd/base64url
+```
+
 # Development Setup
 
 ## Install Goimports
