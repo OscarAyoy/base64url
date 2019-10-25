@@ -7,6 +7,44 @@ Command-line base64url encoder / decoder
 $ go get -u github.com/oscarayoy/base64url/cmd/base64url
 ```
 
+# Usage
+
+```bash
+$ base64url -h
+Usage of base64url:
+  -d	decodes input (default is to encode)
+  -i string
+    	input file or "-" for stdin (default "-")
+  -o string
+    	output file or "-" for stdout (default "-")
+```
+
+Encode from stdin:
+
+```bash
+$ echo "Hello, world" | base64url
+SGVsbG8sIHdvcmxkCg
+```
+
+Decode from stdin:
+
+```bash
+$ echo "SGVsbG8sIHdvcmxkCg" | base64url -d
+Hello, world
+```
+
+Encode to and from file:
+
+```bash
+$ base64url -i plain.txt -o b64.txt
+```
+
+Decode to and from file:
+
+```bash
+$ base64url -d -i b64.txt -o b64.txt
+```
+
 # Development Setup
 
 ## Install Goimports
