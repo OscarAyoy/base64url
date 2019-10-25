@@ -42,7 +42,7 @@ $ base64url -i plain.txt -o b64.txt
 Decode to and from file:
 
 ```bash
-$ base64url -d -i b64.txt -o b64.txt
+$ base64url -d -i b64.txt -o plain.txt
 ```
 
 # Development Setup
